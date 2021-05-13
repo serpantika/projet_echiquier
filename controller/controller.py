@@ -57,8 +57,21 @@ class Controller(object):
         elif choice == "2":
             pass
         elif choice == "3":
-            players = Player.get_players()
-            View.show_number_rank(players)
+            alpha_or_rank = View.classement_choice_allplayers()
+            while alpha_or_rank != "1" or alpha_or_rank != "2":
+                if alpha_or_rank == "1":
+                    players = Player.get_players_alpha()
+                    View.show_number_alpha(players)
+                    choice = View.menu_joueur()
+                    Controller.choice_menu_joueur(choice)
+                if alpha_or_rank == "2":
+                    players = Player.get_players_rank()
+                    View.show_number_rank(players)
+                    choice = View.menu_joueur()
+                    Controller.choice_menu_joueur(choice)
+                View.error()
+                alpha_or_rank = View.classement_choice_allplayers()
+
         elif choice == "4":
             Controller.start_menu_principal()
         else:
