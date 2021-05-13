@@ -15,7 +15,7 @@ class Player:
                         info_player['gender'], info_player['rank'])
         player.save()
 
-    def get_players():
+    def get_players_alpha():
         listplayers = TinyDB('listplayers.json')
         players_table = listplayers.table('players')
         serialized_players = players_table.all()
@@ -24,6 +24,19 @@ class Player:
             player = Player(serialized_player['lastname'], serialized_player['firstname'], serialized_player['birthday']
                             , serialized_player['gender'], serialized_player['rank'])
             players.append(player)
+        players.sort(key=lambda player: player.lastname )
+        return players
+
+    def get_players_rank():
+        listplayers = TinyDB('listplayers.json')
+        players_table = listplayers.table('players')
+        serialized_players = players_table.all()
+        players = list()
+        for serialized_player in serialized_players:
+            player = Player(serialized_player['lastname'], serialized_player['firstname'], serialized_player['birthday']
+                            , serialized_player['gender'], serialized_player['rank'])
+            players.append(player)
+        players.sort(key=lambda player: player.rank)
         return players
 
     def save(self):
