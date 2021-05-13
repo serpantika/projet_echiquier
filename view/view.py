@@ -4,14 +4,14 @@ class View(object):
     def show_number_alpha(players):
         print('--- {} LISTE ---')
         for i, player in enumerate(players):
-            print('{}. {}, {}, {}, {}, {}' .format(i+1, player.name,
-                                                   player.birthday, player.gender, player.rank, player.point))
+            print('{}. {}, {}, {}, {}, {}' .format(i+1, player.lastname, player.firstname,
+                                                  player.birthday, player.gender, player.rank))
 
     @staticmethod
-    def show_number(players):
+    def show_number_rank(players):
         print('--- {} LISTE ---')
         for i, player in enumerate(players):
-            print('{}. {}, {}, {}, {}, {}'.format(i + 1, player.lastname,player.firstname,
+            print('{}. {}, {}, {}, {}, {}'.format(i + 1, player.lastname, player.firstname,
                                                   player.birthday, player.gender, player.rank))
 
     @staticmethod
@@ -44,6 +44,13 @@ class View(object):
         choice = input()
         return choice
 
+    @staticmethod
+    def classement_choice_allplayers():
+        print('/////////Classement/////////\n'
+              '-1: Par nom\n'
+              '-2: par rang ')
+        alpha_or_rank = input()
+        return alpha_or_rank
     @staticmethod
     def add_player():
         print("/////////_Ajouter-joueur_/////////\n"
