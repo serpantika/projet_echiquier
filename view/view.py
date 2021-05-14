@@ -51,6 +51,7 @@ class View(object):
               '-2: par rang ')
         alpha_or_rank = input()
         return alpha_or_rank
+
     @staticmethod
     def add_player():
         print("/////////_Ajouter-joueur_/////////\n"
@@ -72,8 +73,6 @@ class View(object):
 
     @staticmethod
     def add_tournament():
-        i = 1
-        players = list()
         print("/////////_Créer-tournoi_/////////\n"
               "Rentrer les informations du tournoi")
         name = input("-Nom :")
@@ -91,14 +90,12 @@ class View(object):
                            "timecontrol": timecontrol,
                            "description": description,
                            }
-        while i <= 8:
-            print("Joueur n°" + str(i))
-            lastname = input("-Nom: ")
-            firstname = input("-prénom: ")
-            player = {"lastname": lastname, "firstname": firstname}
-            players.append(player)
-            i += 1
-        return info_tournament, players
+        return info_tournament
+
+    @staticmethod
+    def choice_players():
+        choice_player = input("-Choisir numéro joueur: ")
+        return choice_player
 
     @staticmethod
     def error():
