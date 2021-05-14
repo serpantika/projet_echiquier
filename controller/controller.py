@@ -25,8 +25,19 @@ class Controller(object):
 
     def choice_menu_tournament(choice):
         if choice == "1":
-            info_tournament, players = View.add_tournament()
-            list_players= Player.get_players(players)
+            list_players = list()
+            info_tournament = View.add_tournament()
+            players = Player.get_players_alpha()
+            nb_players = 0
+            while nb_players <=7:
+                nb_players += 1
+                View.show_number_alpha(players)
+                choice_player = int(View.choice_players())
+                choice_player -= 1
+                player = players[choice_player]
+                players.__delitem__(choice_player)
+                list_players.append(player)
+            print(list_players)
             Tournament.create_tournament(info_tournament,list_players)
             choice = View.menu_tournoi()
             Controller.choice_menu_tournament(choice)
