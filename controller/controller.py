@@ -36,9 +36,10 @@ class Controller(object):
                 choice_player -= 1
                 player = players[choice_player]
                 players.__delitem__(choice_player)
-                list_players.append(player)
+                serialized_player = Player.serial_player(player)
+                list_players.append(serialized_player)
             print(list_players)
-            Tournament.create_tournament(info_tournament,list_players)
+            Tournament.create_tournament(info_tournament, list_players)
             choice = View.menu_tournoi()
             Controller.choice_menu_tournament(choice)
         elif choice == "2":
