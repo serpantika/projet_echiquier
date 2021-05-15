@@ -51,3 +51,11 @@ class Player:
             print("joueur déjà inscrit")
         else:
             players_table.insert(serialized_player)
+
+    def serial_player(player):
+        serialized_player = {'lastname': player.lastname,
+                             'firstname': player.firstname,
+                             'birthday': player.birthday,
+                             'gender': player.gender,
+                             'rank': player.rank}
+        return serialized_player
