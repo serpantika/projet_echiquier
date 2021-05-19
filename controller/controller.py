@@ -43,12 +43,18 @@ class Controller(object):
             choice = View.menu_tournoi()
             Controller.choice_menu_tournament(choice)
         elif choice == "2":
-            pass
+            name = View.start_tournament()
+            tournament = Tournament.get_players_tournament(name)
+            players = Player.get_tournament_players_rank(tournament)
+            View.show_number_rank(players)
+            Tournament.start_round_one(players)
         elif choice == "3":
             pass
         elif choice == "4":
             pass
         elif choice == "5":
+            pass
+        elif choice == "6":
             Controller.start_menu_principal()
         else:
             View.error()
