@@ -27,10 +27,11 @@ class View(object):
     def menu_tournoi():
         print("/////////_Menu-Tournoi_/////////\n"
               "-1: Créer nouveau tournoi\n"
-              "-2: Charger tournoi\n"
-              "-3: Modifier tournoi\n"
-              "-4: Voir information tournoi\n"
-              "-5: Retour menu principal")
+              "-2: Lancer tournois\n"
+              "-3: Charger tournoi\n"
+              "-4: Modifier tournoi\n"
+              "-5: Voir information tournoi\n"
+              "-6: Retour menu principal")
         choice = input()
         return choice
 
@@ -101,3 +102,9 @@ class View(object):
     def error():
         print("/////////!!erreur!!/////////\n"
               "Commande inconnus")
+
+    @staticmethod
+    def start_tournament():
+        print("/////////Choix-tournois/////////\n")
+        name = input("Nom du tournois à lancer :")
+        return name
