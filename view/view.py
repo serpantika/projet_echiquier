@@ -2,17 +2,41 @@ class View(object):
 
     @staticmethod
     def show_number_alpha(players):
-        print('--- {} LISTE ---')
+        print(f"{'-' * 50} Liste de Joueur {'-' * 52}")
+        print(f"{'id'.center(10)} | "
+              f"{'Nom'.center(25)} | "
+              f"{'Prenom'.center(25)} | "
+              f"{'Date de naissance'.center(20)} | "
+              f"{'Genre'.center(10)} | "
+              f"{'Rank'.center(10)}"
+              f"\n{'-' * 119}")
         for i, player in enumerate(players):
-            print('{}. {}, {}, {}, {}, {}' .format(i+1, player.lastname, player.firstname,
-                                                  player.birthday, player.gender, player.rank))
+            print(f"{str(i + 1).center(10)} | "
+                  f"{str(player.lastname).center(25)} | "
+                  f"{str(player.firstname).center(25)} | "
+                  f"{str(player.birthday).center(20)} | "
+                  f"{str(player.gender).center(10)} | "
+                  f"{str(player.rank).center(10)}"
+                  f"\n{'-' * 119}")
 
     @staticmethod
     def show_number_rank(players):
-        print('--- {} LISTE ---')
+        print(f"{'*' * 50} Liste de Joueur {'*' * 52}")
+        print(f"{'id'.center(10)} | "
+                  f"{'Nom'.center(25)} | "
+                  f"{'Prenom'.center(25)} | "
+                  f"{'Date de naissance'.center(20)} | "
+                  f"{'Genre'.center(10)} | "
+                  f"{'Rank'.center(10)}"
+                  f"\n{'-' * 119}")
         for i, player in enumerate(players):
-            print('{}. {}, {}, {}, {}, {}'.format(i + 1, player.lastname, player.firstname,
-                                                  player.birthday, player.gender, player.rank))
+            print(f"{str(i+1).center(10)} | "
+                  f"{str(player.lastname).center(25)} | "
+                  f"{str(player.firstname).center(25)} | "
+                  f"{str(player.birthday).center(20)} | "
+                  f"{str(player.gender).center(10)} | "
+                  f"{str(player.rank).center(10)}"
+                  f"\n{'-' * 119}")
 
     @staticmethod
     def menu_principal():
