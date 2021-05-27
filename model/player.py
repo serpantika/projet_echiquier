@@ -1,5 +1,4 @@
-from tinydb import TinyDB, Query
-
+from tinydb import TinyDB,Query
 
 class Player:
 
@@ -10,6 +9,7 @@ class Player:
         self.gender = gender
         self.rank = int(rank)
         self.point = point
+
     def create_player(info_player):
         player = Player(info_player['lastname'], info_player['firstname'], info_player['birthday'],
                         info_player['gender'], info_player['rank'], 0)
@@ -38,7 +38,7 @@ class Player:
             player = Player(serialized_player['lastname'], serialized_player['firstname'], serialized_player['birthday']
                             , serialized_player['gender'], serialized_player['rank'], serialized_player['point'])
             players.append(player)
-        players.sort(key=lambda player: player.rank)
+        players.sort(key=lambda player: player.rank, reverse=True)
         return players
 
     def save(self):
@@ -63,13 +63,3 @@ class Player:
                              'rank': player.rank,
                              'point': player.point}
         return serialized_player
-
-    def get_tournament_players_rank(tournament):
-        serialized_tournament_players = tournament.players
-        players = list()
-        for serialized_player in serialized_tournament_players:
-            player = Player(serialized_player['lastname'], serialized_player['firstname'], serialized_player['birthday']
-                            , serialized_player['gender'], serialized_player['rank'], serialized_player['point'])
-            players.append(player)
-        players.players.sort(key=lambda player: player.rank)
-        return players

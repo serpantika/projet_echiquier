@@ -1,7 +1,7 @@
 from view import View
 from model import Player
 from model import Tournament
-
+from model import Match
 
 class Controller(object):
 
@@ -10,22 +10,23 @@ class Controller(object):
         choice = View.menu_principal()
         Controller.choice_menu_principal(choice)
 
-    def choice_menu_principal(choice):
-        if choice == "1":
+    def choice_menu_principal(menu_choice):
+        if menu_choice == "1":
             choice = View.menu_tournoi()
             Controller.choice_menu_tournament(choice)
-        elif choice == "2":
+        elif menu_choice == "2":
             choice = View.menu_joueur()
             Controller.choice_menu_joueur(choice)
-        elif choice == "3":
+        elif menu_choice == "3":
             quit()
         else:
             View.error()
             Controller.start_menu_principal()
 
-    def choice_menu_tournament(choice):
-        if choice == "1":
+    def choice_menu_tournament(menu_choice):
+        if menu_choice == "1":
             list_players = list()
+            match_players = list()
             info_tournament = View.add_tournament()
             players = Player.get_players_alpha()
             nb_players = 0
@@ -36,32 +37,29 @@ class Controller(object):
                 choice_player -= 1
                 player = players[choice_player]
                 players.__delitem__(choice_player)
+                match_players.append(player)
                 serialized_player = Player.serial_player(player)
                 list_players.append(serialized_player)
-            print(list_players)
+            Match.Round_one(match_players)
             Tournament.create_tournament(info_tournament, list_players)
             choice = View.menu_tournoi()
             Controller.choice_menu_tournament(choice)
-        elif choice == "2":
-            name = View.start_tournament()
-            tournament = Tournament.get_players_tournament(name)
-            players = Player.get_tournament_players_rank(tournament)
-            View.show_number_rank(players)
-            Tournament.start_round_one(players)
-        elif choice == "3":
+        elif menu_choice == "2":
             pass
-        elif choice == "4":
+        elif menu_choice == "3":
             pass
-        elif choice == "5":
+        elif menu_choice == "4":
             pass
-        elif choice == "6":
+        elif menu_choice == "5":
+            pass
+        elif menu_choice == "6":
             Controller.start_menu_principal()
         else:
             View.error()
             Controller.start_menu_principal()
 
-    def choice_menu_joueur(choice):
-        if choice == "1":
+    def choice_menu_joueur(menu_choice):
+        if menu_choice == "1":
             repeat = True
             while repeat:
                 info_player, repeat = View.add_player()
@@ -72,9 +70,9 @@ class Controller(object):
                     repeat = False
                     choice = View.menu_joueur()
                     Controller.choice_menu_joueur(choice)
-        elif choice == "2":
+        elif menu_choice == "2":
             pass
-        elif choice == "3":
+        elif menu_choice == "3":
             alpha_or_rank = View.classement_choice_allplayers()
             while alpha_or_rank != "1" or alpha_or_rank != "2":
                 if alpha_or_rank == "1":
@@ -90,7 +88,7 @@ class Controller(object):
                 View.error()
                 alpha_or_rank = View.classement_choice_allplayers()
 
-        elif choice == "4":
+        elif menu_choice == "4":
             Controller.start_menu_principal()
         else:
             View.error()

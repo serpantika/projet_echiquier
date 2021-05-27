@@ -51,10 +51,10 @@ class View(object):
     def menu_tournoi():
         print("/////////_Menu-Tournoi_/////////\n"
               "-1: Créer nouveau tournoi\n"
-              "-2: Lancer tournois\n"
-              "-3: Charger tournoi\n"
-              "-4: Modifier tournoi\n"
-              "-5: Voir information tournoi\n"
+              "-2: Lancer tournois(off)\n"
+              "-3: Charger tournoi(off)\n"
+              "-4: Modifier tournoi(off)\n"
+              "-5: Voir information tournoi(off)\n"
               "-6: Retour menu principal")
         choice = input()
         return choice
@@ -63,7 +63,7 @@ class View(object):
     def menu_joueur():
         print("/////////_Menu-Joueur_/////////\n"
               "-1: Ajouter joueur\n"
-              "-2: Modifier joueur\n"
+              "-2: Modifier joueur(off)\n"
               "-3: Afficher liste joueurs\n"
               "-4: Retour menu principal")
         choice = input()
