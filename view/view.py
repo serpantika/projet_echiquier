@@ -44,8 +44,6 @@ class View(object):
               "-1: Gérer tournois\n"
               "-2: Gérer joueurs\n"
               "-3: Quitter ")
-        choice = input()
-        return choice
 
     @staticmethod
     def menu_tournoi():
@@ -56,8 +54,6 @@ class View(object):
               "-4: Modifier tournoi(off)\n"
               "-5: Voir information tournoi(off)\n"
               "-6: Retour menu principal")
-        choice = input()
-        return choice
 
     @staticmethod
     def menu_joueur():
@@ -66,61 +62,35 @@ class View(object):
               "-2: Modifier joueur(off)\n"
               "-3: Afficher liste joueurs\n"
               "-4: Retour menu principal")
-        choice = input()
-        return choice
 
     @staticmethod
     def classement_choice_allplayers():
         print('/////////Classement/////////\n'
               '-1: Par nom\n'
               '-2: par rang ')
-        alpha_or_rank = input()
-        return alpha_or_rank
 
     @staticmethod
     def add_player():
         print("/////////_Ajouter-joueur_/////////\n"
-              "Rentrer les informations du joueurs")
-        lastname = input("-Nom :")
-        firstname = input("-Prénom :")
-        birthday = input("-Date de Naissance :")
-        gender = input("-Genre :")
-        rank = input("-Classement :")
-        player = {'lastname': lastname,
-                  'firstname': firstname,
-                  'birthday': birthday,
-                  'gender': gender,
-                  'rank': rank}
+              "Rentrer les informations du joueurs\n"
+              "Nom, Prénom, JJ/MM/AAAA, Genre, Classement")
+
+
+    @staticmethod
+    def repeat_addplayer():
         print('Ajouter nouveau joueur ?\n'
               '-1 : oui    -2 : non')
-        repeat = input()
-        return player, repeat
+
 
     @staticmethod
     def add_tournament():
         print("/////////_Créer-tournoi_/////////\n"
-              "Rentrer les informations du tournoi")
-        name = input("-Nom :")
-        localisation = input("-Lieu :")
-        date = input("-Date :")
-        nbturn = input("-Nombre de tour :")
-        rounds = input("-Tournées :")
-        timecontrol = input("-Contrôle du temps :")
-        description = input("-Description :")
-        info_tournament = {"name": name,
-                           "localisation": localisation,
-                           "date": date,
-                           "nbturn": nbturn,
-                           "rounds": rounds,
-                           "timecontrol": timecontrol,
-                           "description": description,
-                           }
-        return info_tournament
+              "Rentrer les informations du tournoi\n"
+              "Nom, Lieu, Date, Nombre de tour, Tournées, Contrôle du temps, Description")
 
     @staticmethod
     def choice_players():
-        choice_player = input("-Choisir numéro joueur: ")
-        return choice_player
+        print("-Choisir numéro joueur: ")
 
     @staticmethod
     def error():
@@ -129,6 +99,6 @@ class View(object):
 
     @staticmethod
     def start_tournament():
-        print("/////////Choix-tournois/////////\n")
-        name = input("Nom du tournois à lancer :")
-        return name
+        print("/////////Choix-tournois/////////\n"
+              "Nom du tournois à lancer :")
+

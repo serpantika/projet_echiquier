@@ -7,15 +7,18 @@ class Controller(object):
 
     @staticmethod
     def start_menu_principal():
-        choice = View.menu_principal()
+        View.menu_principal()
+        choice = input()
         Controller.choice_menu_principal(choice)
 
     def choice_menu_principal(menu_choice):
         if menu_choice == "1":
-            choice = View.menu_tournoi()
+            View.menu_tournoi()
+            choice = input()
             Controller.choice_menu_tournament(choice)
         elif menu_choice == "2":
-            choice = View.menu_joueur()
+            View.menu_joueur()
+            choice = input()
             Controller.choice_menu_joueur(choice)
         elif menu_choice == "3":
             quit()
@@ -27,13 +30,23 @@ class Controller(object):
         if menu_choice == "1":
             list_players = list()
             match_players = list()
-            info_tournament = View.add_tournament()
+            View.add_tournament()
+            info_tournament = input().replace(" ",'').split(sep = ',')
+            tournament = {"name": info_tournament[0],
+                               "localisation": info_tournament[1],
+                               "date": info_tournament[2],
+                               "nbturn": info_tournament[3],
+                               "rounds": info_tournament[4],
+                               "timecontrol": info_tournament[5],
+                               "description": info_tournament[6],
+                               }
             players = Player.get_players_alpha()
             nb_players = 0
             while nb_players <=7:
                 nb_players += 1
                 View.show_number_alpha(players)
-                choice_player = int(View.choice_players())
+                View.choice_players()
+                choice_player = int(input())
                 choice_player -= 1
                 player = players[choice_player]
                 players.__delitem__(choice_player)
@@ -41,8 +54,9 @@ class Controller(object):
                 serialized_player = Player.serial_player(player)
                 list_players.append(serialized_player)
             Match.Round_one(match_players)
-            Tournament.create_tournament(info_tournament, list_players)
-            choice = View.menu_tournoi()
+            Tournament.create_tournament(tournament, list_players)
+            View.menu_tournoi()
+            choice = input()
             Controller.choice_menu_tournament(choice)
         elif menu_choice == "2":
             pass
@@ -62,18 +76,29 @@ class Controller(object):
         if menu_choice == "1":
             repeat = True
             while repeat:
-                info_player, repeat = View.add_player()
-                Player.create_player(info_player)
+                View.add_player()
+                info_player = input().replace(' ', '').split(sep=",")
+                print(info_player)
+                player = {'lastname': info_player[0],
+                          'firstname': info_player[1],
+                          'birthday': info_player[2],
+                          'gender': info_player[3],
+                          'rank': info_player[4]}
+                View.repeat_addplayer()
+                repeat = input()
+                Player.create_player(player)
                 if repeat == "1":
                     repeat = True
                 else:
                     repeat = False
-                    choice = View.menu_joueur()
-                    Controller.choice_menu_joueur(choice)
+            View.menu_joueur()
+            choice = input()
+            Controller.choice_menu_joueur(choice)
         elif menu_choice == "2":
             pass
         elif menu_choice == "3":
-            alpha_or_rank = View.classement_choice_allplayers()
+            View.classement_choice_allplayers()
+            alpha_or_rank = input()
             while alpha_or_rank != "1" or alpha_or_rank != "2":
                 if alpha_or_rank == "1":
                     players = Player.get_players_alpha()
